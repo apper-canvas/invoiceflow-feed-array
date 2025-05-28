@@ -1,6 +1,8 @@
 import { useState } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import MainFeature from '../components/MainFeature'
+import Header from '../components/Header'
+
 import ApperIcon from '../components/ApperIcon'
 
 const Home = () => {
@@ -42,44 +44,9 @@ const Home = () => {
   return (
     <div className="min-h-screen bg-mesh">
       {/* Header */}
-      <header className="relative z-50 bg-white/80 dark:bg-surface-900/80 backdrop-blur-lg border-b border-surface-200/50 dark:border-surface-700/50">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex justify-between items-center h-16">
-            <motion.div 
-              className="flex items-center space-x-3"
-              initial={{ opacity: 0, x: -20 }}
-              animate={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.5 }}
-            >
-              <div className="w-10 h-10 bg-gradient-to-br from-primary to-secondary rounded-xl flex items-center justify-center">
-                <ApperIcon name="Zap" className="w-6 h-6 text-white" />
-              </div>
-              <h1 className="text-2xl font-bold text-gradient">InvoiceFlow</h1>
-            </motion.div>
+      <Header />
 
-            <motion.div 
-              className="flex items-center space-x-4"
-              initial={{ opacity: 0, x: 20 }}
-              animate={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.5, delay: 0.1 }}
-            >
-              <button
-                onClick={toggleDarkMode}
-                className="p-2 rounded-lg bg-surface-100 dark:bg-surface-800 hover:bg-surface-200 dark:hover:bg-surface-700 transition-colors duration-200"
-              >
-                <ApperIcon 
-                  name={darkMode ? 'Sun' : 'Moon'} 
-                  className="w-5 h-5 text-surface-600 dark:text-surface-300" 
-                />
-              </button>
-              <div className="hidden sm:flex items-center space-x-2">
-                <button className="btn-secondary">Login</button>
-                <button className="btn-primary">Start Free Trial</button>
-              </div>
-            </motion.div>
-          </div>
-        </div>
-      </header>
+
 
       {/* Hero Section */}
       <section className="relative py-12 sm:py-20 lg:py-24 overflow-hidden">
