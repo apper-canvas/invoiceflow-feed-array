@@ -16,12 +16,13 @@ const Header = () => {
   }
 
   const navigationLinks = [
-    { name: 'Home', href: '#', active: true },
-    { name: 'Features', href: '#features' },
+    { name: 'Home', href: '/', active: true },
+    { name: 'Features', href: '/features' },
     { name: 'Pricing', href: '#pricing' },
     { name: 'Login', href: '#login' },
     { name: 'Signup', href: '#signup' }
   ]
+
 
   return (
     <header className="relative z-50 bg-white/80 dark:bg-surface-900/80 backdrop-blur-lg border-b border-surface-200/50 dark:border-surface-700/50">
