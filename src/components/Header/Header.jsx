@@ -23,8 +23,6 @@ const Header = () => {
     { name: 'Home', href: '/' },
     { name: 'Features', href: '/features' },
     { name: 'Pricing', href: '/pricing' },
-    { name: 'Login', href: '/login' },
-    { name: 'Signup', href: '/signup' }
   ]
 
   const isActiveLink = (href) => {
@@ -146,7 +144,6 @@ const Header = () => {
                 </Link>
               ))}
 
-              ))}
               <div className="pt-4 flex flex-col space-y-3">
                 <button className="btn-secondary w-full">Login</button>
                 <button className="btn-primary w-full">Start Free Trial</button>
