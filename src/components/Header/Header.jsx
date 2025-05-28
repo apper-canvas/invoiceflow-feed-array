@@ -1,8 +1,12 @@
 import { useState } from 'react'
+import { Link, useLocation } from 'react-router-dom'
 import { motion } from 'framer-motion'
 import ApperIcon from '../ApperIcon'
 
+
 const Header = () => {
+  const location = useLocation()
+
   const [darkMode, setDarkMode] = useState(false)
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
 
@@ -16,12 +20,17 @@ const Header = () => {
   }
 
   const navigationLinks = [
-    { name: 'Home', href: '/', active: true },
+    { name: 'Home', href: '/' },
     { name: 'Features', href: '/features' },
-    { name: 'Pricing', href: '#pricing' },
-    { name: 'Login', href: '#login' },
-    { name: 'Signup', href: '#signup' }
+    { name: 'Pricing', href: '/pricing' },
+    { name: 'Login', href: '/login' },
+    { name: 'Signup', href: '/signup' }
   ]
+
+  const isActiveLink = (href) => {
+    return location.pathname === href
+  }
+
 
 
   return (
@@ -48,19 +57,20 @@ const Header = () => {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, delay: 0.1 }}
           >
-            {navigationLinks.map((link, index) => (
-              <a
+            {navigationLinks.map((link) => (
+              <Link
                 key={link.name}
-                href={link.href}
+                to={link.href}
                 className={`text-sm font-medium transition-colors duration-200 hover:text-primary ${
-                  link.active 
+                  isActiveLink(link.href)
                     ? 'text-primary' 
                     : 'text-surface-600 dark:text-surface-300'
                 }`}
               >
                 {link.name}
-              </a>
+              </Link>
             ))}
+
           </motion.nav>
 
           {/* Desktop Actions */}
@@ -122,18 +132,20 @@ const Header = () => {
           >
             <nav className="flex flex-col space-y-4">
               {navigationLinks.map((link) => (
-                <a
+                <Link
                   key={link.name}
-                  href={link.href}
+                  to={link.href}
                   onClick={() => setMobileMenuOpen(false)}
                   className={`text-base font-medium transition-colors duration-200 hover:text-primary ${
-                    link.active 
+                    isActiveLink(link.href)
                       ? 'text-primary' 
                       : 'text-surface-600 dark:text-surface-300'
                   }`}
                 >
                   {link.name}
-                </a>
+                </Link>
+              ))}
+
               ))}
               <div className="pt-4 flex flex-col space-y-3">
                 <button className="btn-secondary w-full">Login</button>
